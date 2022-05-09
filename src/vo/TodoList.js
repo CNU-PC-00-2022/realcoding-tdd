@@ -41,10 +41,17 @@ class TodoList {
   }
 
   get equalsDayAndCompletedItems() {
-    return this._items.filter(this._completedFilter);
+    return this.equalsDayItems.filter(this._completedFilter);
   }
   get equalsDayAndNotCompletedItems() {
-    return this._items.filter(this._notCompletedFilter);
+    return this.equalsDayItems.filter(this._notCompletedFilter);
+  }
+
+  get notEqualsDayAndCompletedItems() {
+    return this.notEqualsDayItems.filter(this._completedFilter);
+  }
+  get notEqualsDayAndNotCompletedItems() {
+    return this.notEqualsDayItems.filter(this._notCompletedFilter);
   }
 
   get items() {
