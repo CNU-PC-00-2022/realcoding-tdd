@@ -1,4 +1,3 @@
-import { DatabaseFilled } from "@ant-design/icons";
 import { makeObservable, observable } from "mobx";
 
 class TodoItem {
@@ -24,6 +23,12 @@ class TodoItem {
     this._completed = completed;
   }
 
+  equalsDayOfCreatedAt = (_targetDate) => {
+    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+    const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
+    return sourceDate === targetDate;
+  }
+
   updateTask = (task) => {
     this._task = task;
   }
@@ -34,18 +39,6 @@ class TodoItem {
 
   unsetComplete = () => {
     this._completed = false;
-  }
-
-  // isToday = () => {
-  //   const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
-  //   const targetDate = new Date(Date.now()).setHours(0, 0, 0, 0);
-  //   return sourceDate === targetDate;
-  // }
-
-  equalsDayOfCreatedAt = (_targetDate) => {
-    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
-    const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
-    return sourceDate === targetDate;
   }
 
   get id() {
