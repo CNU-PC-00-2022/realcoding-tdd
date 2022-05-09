@@ -1,4 +1,4 @@
-import {computed, makeObservable, observable} from "mobx";
+import {makeObservable, observable} from "mobx";
 
 class TodoItem {
   /*
