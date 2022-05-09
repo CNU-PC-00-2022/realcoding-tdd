@@ -8,11 +8,49 @@ class TodoList {
   _items = [];
   _date = "";
 
-  constructor() {
+  constructor(items, date) {
     makeObservable(this, {
       _items: observable,
     });
+    this._items = items;
+    this._date = date;
   }
+
+  removeTodoItem = (todoId) => {
+    const targetTodoItemIndex = this._items.findIndex(
+      (todo) => todo.id === todoId
+    );
+    if (targetTodoItemIndex === -1) return;
+    this._items.splice(targetTodoItemIndex, 1);
+  }
+
+  pushTodoItem = (todoItem) => {
+    this._items.push(todoItem);
+  }
+
+  _equalsDayFilter = (todoItem) => todoItem.equalsDayOfCreatedAt(this._date);
+  _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayOfCreatedAt(this._date);
+  _completedFilter = (todoItem) => todoItem.completed;
+  _notCompletedFilter = (todoItem) => !todoItem.completed;
+
+  get equalsDayItems() {
+    return this._items.filter(this._equalsDayFilter);
+  }
+  get notEqualsDayItems() {
+    return this._items.filter(this._notEqualsDayFilter);
+  }
+
+  get equalsDayAndCompletedItems() {
+    return this._items.filter(this._completedFilter);
+  }
+  get equalsDayAndNotCompletedItems() {
+    return this._items.filter(this._notCompletedFilter);
+  }
+
+  get items() {
+    return this._items;
+  }
+
 }
 
 export default TodoList;
