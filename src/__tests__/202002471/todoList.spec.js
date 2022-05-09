@@ -1,5 +1,5 @@
-import TodoList from "../vo/TodoList";
-import TodoItem from "../vo/TodoItem";
+import TodoList from "../../vo/TodoList";
+import TodoItem from "../../vo/TodoItem";
 
 let todoItem1, todoItem2,todoItem3,todoItem4,todoItem5;
 let todoList;
@@ -106,6 +106,3 @@ describe("지난 할 일 중 완료/미완료 구분하기.", () => {
     
   });
 });
-
-
-//전체, 완료, 미완료
