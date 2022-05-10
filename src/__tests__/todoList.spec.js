@@ -22,8 +22,8 @@ describe("할 일 목록에서 삭제를 할 수 있다.", () => {
     expect(todoList.items.some((todoItem) => todoItem.id === 3)).toBeFalsy();
   });
 });
-describe("할 일 목록에서 등록을 할 수 있다.", () => { //할일 등록. 실습시간에 테스트 명칭 못봤음.
-  test("5개의 할 일이 있는데, id가 6인 할 일을 등록할 수 있다", () => {
+describe("할 일 목록에서 할 일을 추가할 수 있다.", () => {
+  test("5개의 할 일이 있는데, id가 6인 할 일을 추가할 수 있다", () => {
     const todoItem6 = new TodoItem(6, "할 일 6", new Date());
     todoList.pushTodoItem(todoItem6);
     expect(todoList.items).toHaveLength(6);
@@ -31,7 +31,7 @@ describe("할 일 목록에서 등록을 할 수 있다.", () => { //할일 등�
   });
 });
 describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분하기", () => {
-  test("5개의 할 일이 있는데, 2번 빼고 오늘 할 일이다.", () => {
+  test("5개의 할 일이 있는데, 2번 빼고 오늘 만들 일이다.", () => {
     jest.spyOn(todoItem2, 'equalsDayOfCreatedAt').mockImplementation(() => false);
     expect(todoList.equalsDayItems).toHaveLength(4);
     expect(todoList.equalsDayItems.some((todoItem) => todoItem.id === 2)).toBeFalsy();
@@ -49,15 +49,12 @@ describe("오늘 할 일 중 전체/완료/미완료 구분하기", () => {
     expect(todoList.equalsDayAndCompletedItems).toHaveLength(2);
     expect(todoList.equalsDayAndCompletedItems.some((todoItem) => todoItem.id === 2)).toBeTruthy();
     expect(todoList.equalsDayAndCompletedItems.some((todoItem) => todoItem.id === 3)).toBeTruthy();
-
   });
-  test("5개의 할 일이 있는데, 2번, 4번만 완료다.", () => {
-    jest.spyOn(todoItem2, 'completed', 'get').mockImplementation(() => true);
-    jest.spyOn(todoItem4, 'completed', 'get').mockImplementation(() => true);
-    expect(todoList.equalsDayAndNotCompletedItems).toHaveLength(3);
-    expect(todoList.equalsDayAndNotCompletedItems.some((todoItem) => todoItem.id === 1)).toBeTruthy();
-    expect(todoList.equalsDayAndNotCompletedItems.some((todoItem) => todoItem.id === 3)).toBeTruthy();
-    expect(todoList.equalsDayAndNotCompletedItems.some((todoItem) => todoItem.id === 5)).toBeTruthy();
+  test("5개의 할 일이 있는데, 2번, 4번만 미완료다.", () => {
+    jest.spyOn(todoItem1, 'completed', 'get').mockImplementation(() => true);
+    jest.spyOn(todoItem3, 'completed', 'get').mockImplementation(() => true);
+    jest.spyOn(todoItem5, 'completed', 'get').mockImplementation(() => true);
+    expect(todoList.equalsDayAndNotCompletedItems).toHaveLength(2);
   });
 });
 describe("지난 할 일 중 전체/완료/미완료 구분하기", () => {
@@ -70,21 +67,16 @@ describe("지난 할 일 중 전체/완료/미완료 구분하기", () => {
     jest.spyOn(todoItem2, 'completed', 'get').mockImplementation(() => true);
     jest.spyOn(todoItem3, 'completed', 'get').mockImplementation(() => true);
     expect(todoList.notEqualsDayAndCompletedItems).toHaveLength(2);
-    expect(todoList.notEqualsDayAndCompletedItems.some((todoItem) => todoItem.id === 2)).toBeTruthy();
-    expect(todoList.notEqualsDayAndCompletedItems.some((todoItem) => todoItem.id === 3)).toBeTruthy();
-
   });
-  test("5개의 지난 할 일이 있는데, 2번, 4번만 완료다.", () => {
+  test("5개의 지난 할 일이 있는데, 2번, 4번만 미완료다.", () => {
     jest.spyOn(todoItem1, 'equalsDayOfCreatedAt').mockImplementation(() => false);
     jest.spyOn(todoItem2, 'equalsDayOfCreatedAt').mockImplementation(() => false);
     jest.spyOn(todoItem3, 'equalsDayOfCreatedAt').mockImplementation(() => false);
     jest.spyOn(todoItem4, 'equalsDayOfCreatedAt').mockImplementation(() => false);
     jest.spyOn(todoItem5, 'equalsDayOfCreatedAt').mockImplementation(() => false);
-    jest.spyOn(todoItem2, 'completed', 'get').mockImplementation(() => true);
-    jest.spyOn(todoItem4, 'completed', 'get').mockImplementation(() => true);
-    expect(todoList.notEqualsDayAndNotCompletedItems).toHaveLength(3);
-    expect(todoList.notEqualsDayAndNotCompletedItems.some((todoItem) => todoItem.id === 1)).toBeTruthy();
-    expect(todoList.notEqualsDayAndNotCompletedItems.some((todoItem) => todoItem.id === 3)).toBeTruthy();
-    expect(todoList.notEqualsDayAndNotCompletedItems.some((todoItem) => todoItem.id === 5)).toBeTruthy();
+    jest.spyOn(todoItem1, 'completed', 'get').mockImplementation(() => true);
+    jest.spyOn(todoItem3, 'completed', 'get').mockImplementation(() => true);
+    jest.spyOn(todoItem5, 'completed', 'get').mockImplementation(() => true);
+    expect(todoList.notEqualsDayAndNotCompletedItems).toHaveLength(2);
   });
 });
