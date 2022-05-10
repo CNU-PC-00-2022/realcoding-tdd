@@ -51,4 +51,3 @@ describe("할 일에 날짜가 들어간다.", () => {
     expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeFalsy();
   });
 });
-
