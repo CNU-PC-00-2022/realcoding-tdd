@@ -1,63 +1,72 @@
 import { makeObservable, observable } from "mobx";
 
 class TodoItem {
-  /*
-    id: number (고유값)
-    task: string (할 일)
-    createdAt: Date (생성 된 날짜)
-    completed: boolean (완료 여부)
-  */
-  _id = "";
-  _task = "";
-  _createdAt = "";
-  _completed = false;
 
-  constructor(id, task, createdAt, completed = false) {
-    makeObservable(this, {
-      _task: observable,
-      _completed: observable,
-    });
-    this._id = id;
-    this._task = task;
-    this._createdAt = createdAt;
-    this._completed = completed;
-  }
+    /*
+      id: number (고유값)
+      task: string (할 일)
+      createdAt: Date (생성 된 날짜)
+      completed: boolean (완료 여부)
+    */
+    _id = "";
+    _task = "";
+    _createdAt = "";
+    _completed = false;
 
-  equalsDayOfCreatedAt = (_targetDate) => {
-    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
-    const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
-    return sourceDate === targetDate;
-  }
+    constructor(id, task, createdAt, completed = false) {
+        makeObservable(this, {
+            _task: observable,
+            _completed: observable,
+        });
+        this._id = id;
+        this._task = task;
+        this._createdAt = createdAt;
+        this._completed = completed;
+    }
 
-  setComplete = (task) => {
-    this._completed = true;
-  }
+    // isToday = () => {
+    //     const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+    //     const targetDate = new Date(Date.now()).setHours(0, 0, 0, 0);
 
-  unsetComplete = (task) => {
-    this._completed = false;
-  }
+    //     return sourceDate === targetDate;
+    // }
 
-  updateTask = (task) => {
-    this._task = task;
-  }
+    equalsDayOfCreatedAt = (_targetDate) => {
+        const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+        const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
 
-  get id() {
-    return this._id;
-  }
+        return sourceDate === targetDate;
+    }
 
-  get task() {
-    return this._task;
-  }
+    updateTask = (task) => {
+        this._task = task;
+    }
 
-  get completed() {
-    return this._completed;
-  }
+    setComplete = () => {
+        this._completed = true;
+    }
 
-  get createdAtGMTString() {
-    const date = new Date(this._createdAt);
-    date.setHours(date.getHours() + 9);
-    return date.toISOString().replace("T", " ").substring(0, 19);
-  }
+    unsetComplete = () => {
+        this._completed = false;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    get task() {
+        return this._task;
+    }
+
+    get completed() {
+        return this._completed;
+    }
+
+    get createdAtGMTString() {
+        const date = new Date(this._createdAt);
+        date.setHours(date.getHours() + 9);
+        return date.toISOString().replace("T", " ").substring(0, 19);
+    }
 }
 
 export default TodoItem;
