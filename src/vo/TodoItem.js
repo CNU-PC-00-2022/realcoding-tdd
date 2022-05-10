@@ -36,8 +36,7 @@ class TodoItem {
         const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
 
         return sourceDate === targetDate;
-        //다르면 지난 날짜에 생성된 것
-        //이것을 false로 만들면 지난날이 됨
+
     }
 
     updateTask = (task) => {
