@@ -1,5 +1,5 @@
-import TodoItem from "../vo/TodoItem";
-import TodoList from "../vo/TodoList";
+import TodoItem from "../../vo/TodoItem";
+import TodoList from "../../vo/TodoList";
 let todoItem1, todoItem2, todoItem3, todoItem4, todoItem5, todoList;
 beforeEach(() => {
   todoItem1 = new TodoItem(1, "할 일 1", new Date());
