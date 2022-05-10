@@ -44,6 +44,25 @@ class TodoList {
         return this._items.filter(this._notEqualsDayFilter);
     }
 
+    _completedFilter = (todoItem) => todoItem.completed;
+    _notCompletedFilter = (todoItem) => !todoItem.completed;
+
+    get equalsDayAndCompletedItems() {
+        return this.equalsDayItems.filter(this._completedFilter);
+    }
+
+    get equalsDayAndNotCompletedItems() {
+        return this.equalsDayItems.filter(this._notCompletedFilter);
+    }
+
+    get notEqualsDayAndCompletedItems() {
+        return this.notEqualsDayItems.filter(this._completedFilter);
+    }
+
+    get notEqualsDayAndNotCompletedItems() {
+        return this.notEqualsDayItems.filter(this._notCompletedFilter);
+    }
+
 }
 
 export default TodoList;
