@@ -1,6 +1,8 @@
 import { makeObservable, observable } from "mobx";
+import TodoItem from "./TodoItem";
 
 class TodoList {
+
     /*
       items: TodoItem[] (할 일 리스트)
       date: Date (오늘 날짜)
@@ -62,6 +64,7 @@ class TodoList {
     get notEqualsDayAndNotCompletedItems() {
         return this.notEqualsDayItems.filter(this._notCompletedFilter);
     }
+
 
 }
 

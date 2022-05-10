@@ -1,6 +1,7 @@
 import { makeObservable, observable } from "mobx";
 
 class TodoItem {
+
     /*
       id: number (고유값)
       task: string (할 일)
