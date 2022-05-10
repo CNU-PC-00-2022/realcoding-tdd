@@ -1,4 +1,4 @@
-import TodoItem from "../vo/TodoItem";
+import TodoItem from "../../vo/TodoItem";
 
 describe("할 일을 만들 수 있다.", () => {
   test("todo Item 생성하기", () => {
