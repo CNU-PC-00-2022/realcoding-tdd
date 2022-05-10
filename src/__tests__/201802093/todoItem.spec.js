@@ -23,15 +23,17 @@ describe("할 일을 완료/미완료로 수 있다.", () => {
   });
   test("todo item 미완료로 바꾸기", () => {
     const todoItem = new TodoItem(1, "오늘은 술 먹는날");
-    todoItem.unsetcomplete();
+    todoItem.unsetComplete();
     expect(todoItem.completed).toBeFalsy();
   });
 });
 
 describe("할 일에 날짜가 들어간다.", () => {
   test("todo item이 오늘 만들었으면 isToday가 true이다.", () => {
-    const todoItem = new TodoItem(1, "오늘은 술 먹는날", new Date(Date.now()));
-    expect(todoItem.isToday()).toBeTruthy();
+    const sourceDate = new Date();
+    const targetDate = new Date();
+    const todoItem = new TodoItem(1, "오늘은 술 먹는날", sourceDate);
+    expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeTruthy();
   });
   test("todo item이 어제 만들었으면 isToday가 false이다.", () => {
     const sourceDate = new Date("2022-05-08T10:10:10");
