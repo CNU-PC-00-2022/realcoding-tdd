@@ -36,6 +36,7 @@ class TodoItem {
         const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
 
         return sourceDate === targetDate;
+
     }
 
     updateTask = (task) => {
