@@ -70,7 +70,7 @@ const TodoListView = observer((props) => {
       default:
         return <TodayTodoListView todoList={todoList} />;
     }
-  }, [todoTab]);
+  }, [todoTab, todoList]);
 
   return (
     <Frame>
