@@ -1,4 +1,4 @@
-import TodoItem from "../vo/TodoItem";
+import TodoItem from "../../vo/TodoItem";
 
 describe("할 일 등록 가능", () => {
   test("todo item create", () => {
