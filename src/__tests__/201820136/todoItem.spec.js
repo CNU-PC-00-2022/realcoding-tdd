@@ -16,10 +16,11 @@ describe("할 일을 업데이트할 수 있다.", () => {
 });
 
 describe("할 일을 완료 미완료로 바꿀 수 있다.", () => {
-  test("to do item 완료로 바꾸기", () => {
-    const todoItem = new TodoItem(1, '오늘은 술 먹는 날', new Date(), true);
-    expect(todoItem.completed).toBeTruthy();
-  });
+  test("todo item 완료로 바꾸기", () => {
+      const todoItem = new TodoItem(1, "오늘은 술 먹는 날", new Date());
+      todoItem.setComplete();
+      expect(todoItem.completed).toBeTruthy();
+    });
   test("to do item 미완료로 바꾸기", () => {
     const todoItem = new TodoItem(1, '오늘은 술 먹는 날');
     todoItem.unsetComplete();
@@ -39,7 +40,7 @@ describe("할 일에 날짜가 들어간다.", () => {
     const sourceDate = new Date();
     const targetDate = new Date();
     const todoItem = new TodoItem(1, '오늘은 술 먹는 날', sourceDate);
-    expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeTruthy;
+    expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeTruthy();
   });
 
   test("to do item이 어제 만들었으면, isToday가 false다.", () => {
