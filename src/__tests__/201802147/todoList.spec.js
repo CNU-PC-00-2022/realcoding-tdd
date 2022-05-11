@@ -1,5 +1,5 @@
-import TodoItem from "../vo/TodoItem";
-import TodoList from "../vo/TodoList";
+import TodoItem from "../../vo/201802147/TodoItem";
+import TodoList from "../../vo/201802147/TodoList";
 
 let todoItem1, todoItem2, todoItem3, todoItem4, todoItem5;
 let todoList; 
