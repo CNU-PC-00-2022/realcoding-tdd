@@ -12,12 +12,32 @@ class TodoItem {
   _createdAt = "";
   _completed = false;
 
-  constructor() {
+  constructor(id, task, createdAt, completed) {
     makeObservable(this, {
       _task: observable,
       _completed: observable,
     });
+    this._id = id;
+    this._task = task;
+    this._createdAt = createdAt;
+    this._completed = completed;
   }
+
+  updateTask = (task) => {
+    this._task = task;
+  };
+
+  setComplete = () => {
+    this._completed = true;
+  };
+
+  unSetComplete = () => {
+    this._completed = false;
+  };
+
+  equalsDayOfCreatedAt = (target) => {
+    return this._createdAt.setHours(0, 0, 0, 0) === target.setHours(0, 0, 0, 0);
+  };
 
   get id() {
     return this._id;
