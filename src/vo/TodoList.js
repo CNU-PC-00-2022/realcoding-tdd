@@ -16,7 +16,7 @@ class TodoList {
     this._date = date;
   }
 
-  removeTodoItem = (todoId) => {
+    removeTodoItem = (todoId) => {
     const targetTodoItemIndex = this._items.findIndex(
       (todo) => todo.id === todoId
     );
