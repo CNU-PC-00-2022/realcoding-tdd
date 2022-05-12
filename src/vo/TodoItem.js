@@ -1,5 +1,4 @@
 import { makeObservable, observable } from "mobx";
-import qe from "styled-components";
 
 class TodoItem {
   /*
@@ -20,6 +19,7 @@ class TodoItem {
     });
     this._id = id;
     this._task = task;
+    //this._createdAt = new Date(Date.now());
     this._createdAt = createdAt;
     this._completed = completed;
   }
@@ -28,18 +28,23 @@ class TodoItem {
     this._task = task;
   }
 
-  setComplete = () => {
+  setComplete = (task) => {
     this._completed = true;
   }
 
-  unsetComplete = () => {
+  setUncomplete = (task) => {
     this._completed = false;
   }
 
-  equalsDayOfCreatedAt = (_targetDate) => {
-    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0,0);
-    const targetDate = new Date(_targetDate).setHours(0, 0, 0,0);
+  isToday = () => {
+    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+    const targetDate = new Date(Date.now()).setHours(0, 0, 0, 0);
+    return sourceDate === targetDate;
+  }
 
+  equalsDayOfCreatedAt = (_targetDate) => {
+    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+    const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
     return sourceDate === targetDate;
   }
 
