@@ -1,4 +1,4 @@
-import TodoItem from "../vo/TodoItem";
+import TodoItem from "../../vo/TodoItem";
 
 describe("할 일을 만들 수 있다.", () => {
   test("todo item 생성하기", () => {
@@ -51,3 +51,4 @@ describe("할 일에 날짜가 들어간다.", () => {
     expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeFalsy();
   });
 });
+
