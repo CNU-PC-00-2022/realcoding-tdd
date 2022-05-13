@@ -12,22 +12,22 @@ beforeEach(() => {
 });
 describe("할 일 목록을 가지고 있다.", () => {
   test("5개를 만들면, 5개가 있다.", () => {
-    expect(todoList.items).toHaveLength(5);
+    expect(todoList._items).toHaveLength(5);
   });
 });
 describe("할 일 목록에서 삭제를 할 수 있다.", () => {
   test("5개의 할 일이 있는데, id가 3인 할 일을 삭제할 수 있다", () => {
     todoList.removeTodoItem(3);
-    expect(todoList.items).toHaveLength(4);
-    expect(todoList.items.some((todoItem) => todoItem.id === 3)).toBeFalsy();
+    expect(todoList._items).toHaveLength(4);
+    expect(todoList._items.some((todoItem) => todoItem.id === 3)).toBeFalsy();
   });
 });
 describe("할 일 목록에서 할 일을 추가할 수 있다.", () => {
   test("5개의 할 일이 있는데, id가 6인 할 일을 추가할 수 있다", () => {
     const todoItem6 = new TodoItem(6, "할 일 6", new Date());
     todoList.pushTodoItem(todoItem6);
-    expect(todoList.items).toHaveLength(6);
-    expect(todoList.items.some((todoItem) => todoItem.id === 6)).toBeTruthy();
+    expect(todoList._items).toHaveLength(6);
+    expect(todoList._items.some((todoItem) => todoItem.id === 6)).toBeTruthy();
   });
 });
 describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분하기", () => {
