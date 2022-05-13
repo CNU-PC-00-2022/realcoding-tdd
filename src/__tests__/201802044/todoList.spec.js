@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import TodoItem from "../../vo/201802044/TodoItem";
 import TodoList from "../../vo/201802044/TodoList";
-=======
-import TodoItem from "../../vo/TodoItem";
-import TodoList from "../../vo/TodoList";
->>>>>>> 72431bffd5a0d19e233a7a869a58574e333b6303
 
 let todoItem1, todoItem2, todoItem3, todoItem4, todoItem5;
 let todoList;
@@ -15,11 +10,7 @@ beforeEach(() => {
   todoItem3 = new TodoItem(3, "job3", new Date());
   todoItem4 = new TodoItem(4, "job4", new Date());
   todoItem5 = new TodoItem(5, "job5", new Date());
-<<<<<<< HEAD
   const todoItemList = [todoItem1, todoItem2, todoItem3, todoItem4, todoItem5];
-=======
-  const todoItemList= [todoItem1, todoItem2, todoItem3, todoItem4, todoItem5];
->>>>>>> 72431bffd5a0d19e233a7a869a58574e333b6303
   todoList = new TodoList(todoItemList, new Date());
 });
 
@@ -48,7 +39,6 @@ describe("할 일 목록을 추가할 수 있다.", () => {
 
 describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분하기.", () => {
   test("5개의 할 일이 있는데, 2번 빼고 오늘 만들 일이다.", () => {
-<<<<<<< HEAD
     jest
       .spyOn(todoItem2, "equalsDayOfCreatedAt")
       .mockImplementation(() => false);
@@ -68,19 +58,6 @@ describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분�
     expect(
       todoList.notEqualsDayItems.some((todoItem) => todoItem.id === 2)
     ).toBeTruthy();
-=======
-    jest.spyOn(todoItem2, "equalsDayOfCreatedAt").mockImplementation(() => false);
-
-    expect(todoList.equalsDayItems).toHaveLength(4);
-    expect(todoList.equalsDayItems.some((todoItem) => todoItem.id === 2)).toBeFalsy();
-  });
-
-  test("5개의 할 일이 있는데, id 2번만 지난 할 일이다.", () => {
-    jest.spyOn(todoItem2, "equalsDayOfCreatedAt").mockImplementation(() => false);
-
-    expect(todoList.notEqualsDayItems).toHaveLength(1);
-    expect(todoList.notEqualsDayItems.some((todoItem) => todoItem.id === 2)).toBeTruthy();
->>>>>>> 72431bffd5a0d19e233a7a869a58574e333b6303
   });
 });
 
@@ -110,8 +87,4 @@ describe("지난 할 일 중 완료/미완료 구분하기.", () => {
     jest.spyOn(todoItem5, "completed", "get").mockReturnValue(() => true);
     expect(todoList.notEqualsDayAndNotCompletedItems).toHaveLength(2);
   });
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 72431bffd5a0d19e233a7a869a58574e333b6303
