@@ -37,6 +37,7 @@ class TodoItem {
     this._completed = true;
   }
 
+
   unsetComplete = () => {
     this._completed = false;
   }
