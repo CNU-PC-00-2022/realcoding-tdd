@@ -23,23 +23,26 @@ class TodoItem {
     this._completed = completed;
   }
 
-  equalsDayofCreadtedAt = (_targetDate) => {
+  equalsDayOfCreatedAt = (_targetDate) => {
     const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
     const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
-    return sourceDate === targetDate;
+    //sourceDate.setHours(0, 0, 0, 0);
+    //targetDate.setHours(0, 0, 0, 0);
 
-  }
+    return sourceDate === targetDate;
+  };
+
   updateTask = (task) => {
     this._task = task;
-  }
+  };
 
   setComplete = () => {
     this._completed = true;
-  }
+  };
 
   unsetComplete = () => {
     this._completed = false;
-  }
+  };
 
   get id() {
     return this._id;
