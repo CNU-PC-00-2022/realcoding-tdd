@@ -38,14 +38,14 @@ describe("할 일에 날짜가 들어간다.", () => {
     const sourceDate = new Date();
     const targetDate = new Date();
     const todoitem = new TodoItem(1, "오늘은 술 먹는날", sourceDate);
-    expect(todoitem.equalsDayofCreatedAt(targetDate)).toBeTruthy();
+    expect(todoitem.equalsDayOfCreatedAt(targetDate)).toBeTruthy();
   });
 
   test("todo item이 어제 만들었으면, isToday가 false다.", () => {
     const sourceDate = new Date('2022-05-08T10:00:00');
     const targetDate = new Date('2022-05-09T10:00:00');
     const todoItem = new TodoItem(1, "오늘은 술 먹는날", sourceDate);
-    expect(todoItem.equalsDayofCreatedAt(targetDate)).toBeFalsy();
+    expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeFalsy();
   });
 });
 

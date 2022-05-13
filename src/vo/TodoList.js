@@ -33,8 +33,8 @@ class TodoList {
     this._items.push(newItem);
   }
 
-  _equalsDayFilter = (todoItem) => todoItem.equalsDayofCreatedAt(this._date);
-  _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayofCreatedAt(this._date);
+  _equalsDayFilter = (todoItem) => todoItem.equalsDayOfCreatedAt(this._date);
+  _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayOfCreatedAt(this._date);
 
   get equalsDayItems() {
     return this._items.filter(this._equalsDayFilter);
