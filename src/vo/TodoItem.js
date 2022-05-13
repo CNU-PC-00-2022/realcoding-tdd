@@ -12,7 +12,8 @@ class TodoItem {
   _createdAt = "";
   _completed = false;
 
-  constructor(id, task, createdAt, completed = false) {
+
+  constructor(id, task, createdAt, completed) {
     makeObservable(this, {
       _task: observable,
       _completed: observable,
@@ -22,6 +23,7 @@ class TodoItem {
     this._createdAt = createdAt;
     this._completed = completed;
   }
+
   equalsDayOfCreatedAt = (_targetDate) => {
     const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
     const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
@@ -35,6 +37,7 @@ class TodoItem {
   setComplete = () => {
     this._completed = true;
   }
+
 
   unsetComplete = () => {
     this._completed = false;

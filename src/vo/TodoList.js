@@ -1,4 +1,5 @@
 import { makeObservable, observable } from "mobx";
+import todoItem from "./TodoItem";
 
 class TodoList {
   /*
@@ -15,22 +16,25 @@ class TodoList {
     this._items = items;
     this._date = date;
   }
-  removeTodoItem = (todoId) => {
-    const targetTodoItemIndex = this._items.findIndex (
-      (todo) => todo.id === todoId
+
+  get items() {
+    return this._items;
+  }
+
+  removeToDoItem = (todoId) => {
+    const targetTodoItemIndex = this._items.findIndex(
+        (todo) => todo.id === todoId
     );
     if (targetTodoItemIndex === -1) return;
     this._items.splice(targetTodoItemIndex, 1);
   }
-  pushTodoItem = (todoItem) => {
-    this._items.push(todoItem);
+
+  pushToDoItem = (newItem) => {
+    this._items.push(newItem);
   }
 
-  _equalsDayFilter = (todoItem) => todoItem.equalsDayOfCreatedAt(this._date);
-  _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayOfCreatedAt(this._date);
-
-  _completedFilter = (todoItem) => todoItem.completed;
-  _notCompletedFilter = (todoItem) => !todoItem.completed;
+  _equalsDayFilter = (todoItem) => todoItem.equalsDayofCreatedAt(this._date);
+  _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayofCreatedAt(this._date);
 
   get equalsDayItems() {
     return this._items.filter(this._equalsDayFilter);
@@ -40,25 +44,22 @@ class TodoList {
     return this._items.filter(this._notEqualsDayFilter);
   }
 
-  get items() {
-    return this._items;
-  }
+  _completedFilter = (todoItem) => todoItem.completed;
+  _notCompletedFilter = (todoItem) => !todoItem.completed;
 
   get equalsDayAndCompletedItems() {
     return this.equalsDayItems.filter(this._completedFilter);
   }
-
   get equalsDayAndNotCompletedItems() {
     return this.equalsDayItems.filter(this._notCompletedFilter);
   }
-
   get notEqualsDayAndCompletedItems() {
     return this.notEqualsDayItems.filter(this._completedFilter);
   }
-
   get notEqualsDayAndNotCompletedItems() {
     return this.notEqualsDayItems.filter(this._notCompletedFilter);
   }
+
 }
 
 export default TodoList;
