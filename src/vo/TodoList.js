@@ -21,7 +21,7 @@ class TodoList {
     return this._items;
   }
 
-  removeToDoItem = (todoId) => {
+  removeTodoItem = (todoId) => {
     const targetTodoItemIndex = this._items.findIndex(
         (todo) => todo.id === todoId
     );
@@ -29,7 +29,7 @@ class TodoList {
     this._items.splice(targetTodoItemIndex, 1);
   }
 
-  pushToDoItem = (newItem) => {
+  pushTodoItem = (newItem) => {
     this._items.push(newItem);
   }
 

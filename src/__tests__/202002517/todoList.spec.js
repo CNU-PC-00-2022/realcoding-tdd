@@ -22,7 +22,7 @@ describe("할 일 목록을 가지고 있다.", () => {
 
 describe("할 일 목록에서 삭제를 할 수 있다.", () => {
   test("5개의 할 일이 있는데, id가 3인 할 일을 삭제할 수 있다.", () => {
-    todoList.removeToDoItem(3);
+    todoList.removeTodoItem(3);
     expect(todoList.items).toHaveLength(4);
     expect(todoList.items.some((todoItem) => todoItem.id === 3)).toBeFalsy();
   });
@@ -32,7 +32,7 @@ describe("할 일 목록에서 할 일을 추가 할 수 있다.", () => {
   test("5개의 할 일이 있는데, id가 6인 할 일을 추가할 수 있다.", () => {
     const todoItem6 = new TodoItem(6, '할 일 6', new Date());
 
-    todoList.pushToDoItem(todoItem6);
+    todoList.pushTodoItem(todoItem6);
     //items.push(date)
     expect(todoList.items).toHaveLength(6);
     expect(todoList.items.some((todoItem) => todoItem.id === 6)).toBeTruthy();
