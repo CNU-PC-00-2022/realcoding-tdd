@@ -12,6 +12,7 @@ class TodoItem {
   _createdAt = "";
   _completed = false;
 
+
   constructor(id, task, createdAt, completed) {
     makeObservable(this, {
       _task: observable,
