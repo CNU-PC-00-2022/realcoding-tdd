@@ -56,7 +56,7 @@ describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분�
     expect(todoList.notEqualsDayItems.some((todoItem) => todoItem.id === 2)).toBeTruthy();
   });
 });
-
+//과제 테스트 케이스를 좀 더 세분화했다.
 describe("지난 할 일 중 완료/미완료 구분하기.", () => {
   test("5개의 지난 할 일이 있는데, 2번, 3번만 완료다.", () => {
     //5 개의 지난일
