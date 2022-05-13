@@ -16,6 +16,7 @@ class TodoList {
     this._date = date;
   }
 
+
   removeTodoItem = (todoTd) => {
     const targetTodoItemIndex = this._items.findIndex(
         (todo) => todo.id === todoTd
@@ -27,6 +28,7 @@ class TodoList {
   pushTodoItem = (todoItem) => {
     this._items.push(todoItem);
   }
+
 
   _equalsDayFilter = (todoItem) => todoItem.equalsDayOfCreatedAt(this._date)
   _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayOfCreatedAt(this._date)

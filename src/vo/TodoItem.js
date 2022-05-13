@@ -23,16 +23,14 @@ class TodoItem {
     this._completed = completed;
   }
 
-  updateTask = (task) => {
-    this._task = task;
-  }
-
-
-
   equalsDayOfCreatedAt = (_targetDate) => {
     const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
     const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
     return sourceDate === targetDate;
+  }
+
+  updateTask = (task) => {
+    this._task = task;
   }
 
   setComplete = () => {
