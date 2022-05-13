@@ -21,7 +21,12 @@ class TodoItem {
     this._task = task;
     this._createdAt = createdAt;
     this._completed = completed;
-    //this._createdAt = new Date(Date.now());
+  }
+
+  equalsDayOfCreatedAt = (_targetDate) => {
+    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+    const targetDate = new Date(_targetDate).setHours(0, 0, 0, 0);
+    return sourceDate === targetDate;
   }
 
   updateTask = (task) => {
@@ -31,15 +36,10 @@ class TodoItem {
   setComplete = () => {
     this._completed = true;
   }
+
+
   unsetComplete = () => {
     this._completed = false;
-  }
-
-
-  equalsDayofCreatedAt = () => {
-    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
-    const targetDate = new Date(Date.now()).setHours(0, 0, 0, 0);
-    return sourceDate === targetDate;
   }
 
   get id() {
