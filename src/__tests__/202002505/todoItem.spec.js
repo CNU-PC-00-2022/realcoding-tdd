@@ -52,13 +52,3 @@ describe("할 일에 날짜가 들어간다.", () => {
     expect(todoItem.equalsDayOfCreatedAt(targetDate)).toBeFalsy();
   });
 });
-
-// describe("할 일에 날짜가 들어간다.", () => {
-//   test("todo item이 오늘 만들었으면, isToday가 true이다.", () => {
-//     const sourceDate = new Date();
-//     const targetDate = new Date();
-
-//     expect(todoItem(targetDate)).toBeFalsy();
-
-//   });
-// });
