@@ -1,4 +1,4 @@
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action, computed } from "mobx";
 
 class TodoItem {
   /*
@@ -12,7 +12,7 @@ class TodoItem {
   _createdAt = "";
   _completed = false;
 
-  constructor(id,task, createdAt, completed = false) {
+  constructor(id, task, createdAt, completed = false) {
     makeObservable(this, {
       _task: observable,
       _completed: observable,
@@ -20,36 +20,26 @@ class TodoItem {
     this._id = id;
     this._task = task;
     this._createdAt = createdAt;
-
-    //할일을 완료로 만들기
     this._completed = completed;
   }
 
-  equalsDayOfCreatedAt = (_targetDate) => {
-    const sourceDate = new Date(this._createdAt).setHours(0,0,0,0);
-    const targetDate = new Date(_targetDate).setHours(0,0,0,0);
-    return sourceDate === targetDate;
-  }
+  updateTask = (task) => {
+    this._task = task;
+  };
 
   setComplete = () => {
     this._completed = true;
-  }
+  };
 
   unsetComplete = () => {
     this._completed = false;
-  }
+  };
 
-
-  updateTask = (task) => {
-    this._task = task;
-  } 
-
-  isToday = () => {
-    const sourceDate = new Date(this._createdAt).setHours(0,0,0,0);
-    const targetDate = new Date(Date.now()).setHours(0,0,0,0);
-
+  equalsDayOfCreatedAt = (date) => {
+    const sourceDate = new Date(this._createdAt).setHours(0, 0, 0, 0);
+    const targetDate = new Date(date).setHours(0, 0, 0, 0);
     return sourceDate === targetDate;
-  }
+  };
 
 
   get id() {

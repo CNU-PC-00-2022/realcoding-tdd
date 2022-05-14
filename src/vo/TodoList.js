@@ -1,5 +1,5 @@
-import { computed, makeObservable, observable } from "mobx";
-import TodoItem from "./TodoItem";
+import { makeObservable, observable } from "mobx";
+import todoItem from "./TodoItem";
 
 class TodoList {
   /*
@@ -8,77 +8,58 @@ class TodoList {
   */
   _items = [];
   _date = "";
-  completed = false;
-
-  constructor(items, date, completed) {
+  constructor(items, date) {
     makeObservable(this, {
       _items: observable,
     });
     this._items = items;
     this._date = date;
-    this._completed = completed;
-
   }
 
-  get items() {
-    return this._items;
+  removeTodoItem = (todoId) => {
+    const targetTodoItemindex = this._items.findIndex(
+        (todo) => todo.id === todoId
+    );
+    if (targetTodoItemindex === -1) return;
+    this._items.splice(targetTodoItemindex, 1);
   }
 
-  equalsDayOfCreatedAt
+  pushTodoItem = (todoItem) => {
+    this._items.push(todoItem)
+  }
 
-  
-  _equalsDayFilter = (TodoItem) => TodoItem.equalsDayOfCreatedAt(this._date); 
-  _notequalsDayFilter = (TodoItem) => !TodoItem.equalsDayOfCreatedAt(this._date); 
-  _completedFilter = (TodoItem) => TodoItem.completed; 
-  _notcompletedFilter = (TodoItem) => !TodoItem.completed;
-  
-  
+  _equalsDayFilter = (todoItem) => todoItem.equalsDayOfCreatedAt(this._date);
+  _notEqualsDayFilter = (todoItem) => !todoItem.equalsDayOfCreatedAt(this._date);
+  _completedFilter = (todoItem) => todoItem.completed;
+  _notCompletedFilter = (todoItem) => !todoItem.completed;
 
   get equalsDayItems() {
     return this._items.filter(this._equalsDayFilter);
-  }
-  get notequalsDayItems() {
-    return this._items.filter(this._notequalsDayFilter);
   }
 
   get equalsDayAndCompletedItems() {
     return this.equalsDayItems.filter(this._completedFilter);
   }
+
   get equalsDayAndNotCompletedItems() {
-    return this.equalsDayItems.filter(this._notcompletedFilter);
+    return this.equalsDayItems.filter(this._notCompletedFilter);
   }
 
+  get notEqualsDayItems() {
+    return this._items.filter(this._notEqualsDayFilter);
+  }
 
-  //notequalsDayAndCompletedItems
-  //구현
-  get notequalsDayAndCompletedItems() {
-    return this.notequalsDayItems.filter(this._completedFilter);
-  };
-  get notequalsDayAndNotCompletedItems(){
-    return this.notequalsDayItems.filter(this._notcompletedFilter);
-  };
+  get notEqualsDayAndCompletedItems() {
+    return this.notEqualsDayItems.filter(this._completedFilter);
+  }
 
+  get notEqualsDayAndNotCompletedItems() {
+    return this.notEqualsDayItems.filter(this._notCompletedFilter);
+  }
 
-  removeTodoItem = (todoId) => {
-
-    const targetTodoItemIndex = this._items.findIndex(
-      (todo) => todo.id === todoId
-    );
-    if(targetTodoItemIndex === -1 ) return;
-    this._items.splice(targetTodoItemIndex, 1);
-  };
-  
-  pushTodoItem = (_todoItem) => {
-    this._items.push(_todoItem);
-  };
-
-  equalsDayOfCreatedAt = (_date) => {
-    return this.date === _date;
-  };
-
-
+  get items() {
+    return this._items;
+  }
 }
-
-
 
 export default TodoList;
