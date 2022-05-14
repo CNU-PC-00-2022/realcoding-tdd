@@ -41,6 +41,7 @@ class TodoItem {
     return sourceDate === targetDate;
   };
 
+
   get id() {
     return this._id;
   }
