@@ -1,5 +1,5 @@
-import TodoItem from "../../vo/201802170/TodoItem";
-import TodoList from "../../vo/201802170/TodoList";
+import TodoItem from "../../vo/TodoItem";
+import TodoList from "../../vo/TodoList";
 
 let todoItem1, todoItem2, todoItem3, todoItem4, todoItem5;
 let todoList; 
@@ -22,7 +22,7 @@ describe("할 일 목록을 가지고 있다.", () => {
 
 describe("할 일 목록에서 삭제를 할 수 있다..", () => {
   test("5개를 만들면, id가 3인 할 일을 삭제할 수 있다.", () => {
-    todoList.removeTodoItems(3);
+    todoList.removeTodoItem(3);
     expect(todoList.items).toHaveLength(4);
     expect(todoList.items.some((todoItem) => todoItem.id === 3)).toBeFalsy();
   });
