@@ -8,7 +8,6 @@ class TodoList {
   */
   _items = [];
   _date = "";
-
   constructor(items, date) {
     makeObservable(this, {
       _items: observable,
