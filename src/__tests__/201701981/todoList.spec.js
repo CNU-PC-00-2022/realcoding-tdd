@@ -109,7 +109,7 @@ describe("지난 할 일 중 완료/미완료 구분하기", () => {
         jest.spyOn(todoItem4, "equalsDayOfCreatedAt").mockImplementation(() => false);
         jest.spyOn(todoItem5, "equalsDayOfCreatedAt").mockImplementation(() => false);
 
-        // 완료
+        // 완료!
         // 2, 4 번 빼고 나머지를 완료로.
         jest.spyOn(todoItem1, "completed", "get").mockReturnValue(true);
         jest.spyOn(todoItem3, "completed", "get").mockReturnValue(true);
