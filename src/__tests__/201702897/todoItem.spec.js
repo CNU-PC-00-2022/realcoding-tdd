@@ -24,7 +24,7 @@ describe("할 일을 완료/미완료로 바꿀 수 있다.", () => {
 
   test("todo item 미완료로 바꾸기", () => {
     const todo_item = new TodoItem(1, "오늘은 술 먹는날");
-    todo_item.unsetcomplete();
+    todo_item.unsetComplete();
     expect(todo_item.completed).toBeFalsy();
   });
 });
