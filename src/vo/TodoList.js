@@ -8,10 +8,54 @@ class TodoList {
   _items = [];
   _date = "";
 
-  constructor() {
+  constructor(items, date) {
     makeObservable(this, {
       _items: observable,
     });
+    this._items = items;
+    this._date = date;
+  }
+  
+  get items() {
+    return this._items;
+  }
+
+  get equalsDayItems() {
+    return this._items.filter(item => item.equalsDayOfCreatedAt(this._date));
+  }
+
+  get notEqualsDayItems() {
+    return this._items.filter(item => !item.equalsDayOfCreatedAt(this._date));
+  }
+
+  pushTodoItem = (item) => {
+    if (this._items.filter(i => i.id === item.id).length === 0) {
+      // 기존에 해당하는 ID가 없으면 추가합니다.
+      this._items.push(item);
+    } else {
+      // 기존에 해당하는 ID가 있으면 수정합니다.
+      this._items = [...this._items.filter(i => i.id !== item.id), item];
+    }
+  }
+
+  removeTodoItem = (id) => {
+    this._items = this._items.filter(item => item.id !== id);
+  }
+
+  get equalsDayAndCompletedItems() {
+    return this.equalsDayItems.filter((item) => item.completed);
+  }
+
+  get equalsDayAndNotCompletedItems() {
+    return this.equalsDayItems.filter((item) => !item.completed);
+  }
+
+  get notEqualsDayAndCompletedItems() {
+    return this.notEqualsDayItems.filter(item => item.completed);
+  }
+
+  get notEqualsDayAndNotCompletedItems() {
+    return this.notEqualsDayItems.filter(item => !item.completed);
   }
 }
 
