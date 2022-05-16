@@ -57,18 +57,19 @@ describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분�
 
 describe("오늘 할 일 중 완료/미완료 구분하기", () => {
   test("5개의 할 일이 있는데, 2번 3만 완료이다.", () => {
-    jest.spyOn(todo_item2, "completed", "get").mockReturnValue(() => true);
-    jest.spyOn(todo_item3, "completed", "get").mockReturnValue(() => true);
-
-    expect(todo_list.equalsDayAndCompletedItems).toHaveLength(2);
+    jest.spyOn(todo_item2, "completed", "get").mockImplementation(() => true);
+    jest.spyOn(todo_item3, "completed", "get").mockImplementation(() => true);
+    expect(todo_list.equalsDayAndCompletedItems.some((todo_item) => todo_item.id === 2)).toBeTruthy();
+    expect(todo_list.equalsDayAndCompletedItems.some((todo_item) => todo_item.id === 3)).toBeTruthy();
   });
 
   test("5개의 할 일이 있는데, 2번 4번만 미완료이다.", () => {
-    jest.spyOn(todo_item1, "completed", "get").mockReturnValue(() => true);
-    jest.spyOn(todo_item3, "completed", "get").mockReturnValue(() => true);
-    jest.spyOn(todo_item5, "completed", "get").mockReturnValue(() => true);
-
+    jest.spyOn(todo_item1, "completed", "get").mockImplementation(() => true);
+    jest.spyOn(todo_item3, "completed", "get").mockImplementation(() => true);
+    jest.spyOn(todo_item5, "completed", "get").mockImplementation(() => true);
     expect(todo_list.equalsDayAndNotCompletedItems).toHaveLength(2);
+    expect(todo_list.equalsDayAndNotCompletedItems.some((todo_item) => todo_item.id === 2)).toBeTruthy();
+    expect(todo_list.equalsDayAndNotCompletedItems.some((todo_item) => todo_item.id === 4)).toBeTruthy();
   });
 });
 
