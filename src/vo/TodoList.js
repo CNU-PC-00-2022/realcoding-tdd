@@ -16,9 +16,9 @@ class TodoList {
     this._date = date;
   }
 
-  removeTodoItem = (todoId) => {
+    removeTodoItem = (todoId) => {
     const targetTodoItemIndex = this._items.findIndex(
-        (todo) => todo.id === todoId
+      (todo) => todo.id === todoId
     );
     if (targetTodoItemIndex === -1) return;
     this._items.splice(targetTodoItemIndex, 1);
